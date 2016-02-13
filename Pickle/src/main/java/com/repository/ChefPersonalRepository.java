@@ -15,6 +15,13 @@ public interface ChefPersonalRepository  extends JpaRepository<ChefPersonal,Inte
 	ChefPersonal findOne(String id);
 
 
+	
+
+
+	ChefPersonal findByName(String name);
+	
+
+
 
 	
 

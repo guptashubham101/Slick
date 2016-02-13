@@ -2,7 +2,8 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@include file="../layout/taglib.jsp"%>
-<html>
+<%@include file="../layout/taglib.jsp"%>
+
 <head>
   <title>User SignUp</title>
   <meta charset="utf-8">

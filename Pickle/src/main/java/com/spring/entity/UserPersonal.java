@@ -16,7 +16,7 @@ public class UserPersonal {
 	
 	@Id
 	@GeneratedValue
-	private Integer userid;
+	private String userid;
 	private boolean enabled;
 	private String ufname;
 	private String ulname;
@@ -58,10 +58,10 @@ public class UserPersonal {
 	}
 
 	
-	public Integer getUserid() {
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(Integer userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 	public String getUfname() {

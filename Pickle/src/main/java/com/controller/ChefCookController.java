@@ -1,12 +1,17 @@
 package com.controller;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.service.ChefBreakfastService;
 import com.service.ChefDinnerService;
@@ -62,50 +67,59 @@ public class ChefCookController {
 	return new ChefDinner();
 	}
 	
-	@RequestMapping("/chef/cook/breakfast")
-	public String home(HttpSession request){
-		System.out.println(request.getAttribute("chefid"));
+	@RequestMapping("/loginport")
+	public String home(Model model,Principal principal){
+		String name = principal.getName();
+		model.addAttribute("chefname",chefPersonalService.findByName(name));
 		return "chef_cook";
 	}
 	
-	@RequestMapping(value="/chef/cook/breakfast",method=RequestMethod.POST)
-	public String breakfast(HttpSession request,@ModelAttribute("chefbreakfast") ChefBreakfast chefBreakfast)
+	
+	@RequestMapping(value="/loginport",method=RequestMethod.POST)
+	public String breakfast(Model model, BindingResult result ,Principal principal,@ModelAttribute("chefbreakfast") ChefBreakfast chefBreakfast)
 	{
-		String id=(String) request.getAttribute("chefid");
-		ChefPersonal chefpersonal=chefPersonalService.findOne(id);
-		chefBreakfast.setChefpersonal(chefpersonal);
-		chefBreakfastService.save(chefBreakfast);
-		//return "redirect:/chef/cook/lunch";
+		if(result.hasErrors())
+			return home(model,principal);
+		String name= principal.getName();
+		chefBreakfastService.save(chefBreakfast,name);
+		
+		
+		return "redirect:/chef_cook.html?param1=firsttab";
 	}
 	
 	@RequestMapping(value="/chef/cook/lunch")
-	public String lunch(HttpSession request,@ModelAttribute("cheflunch") ChefLunch chefLunch)
+	public String lunch(Model model, BindingResult result ,Principal principal,@ModelAttribute("cheflunch") ChefLunch chefLunch)
 	{
-		String id=(String) request.getAttribute("chefid");
-		ChefPersonal chefpersonal=chefPersonalService.findOne(id);
-		chefLunch.setChefpersonal(chefpersonal);
-		chefLunchService.save(chefLunch);
-		//return "redirect:/chef/cook/snacks";
+		
+		if(result.hasErrors())
+			return home(model,principal);
+		String name= principal.getName();
+		chefLunchService.save(chefLunch,name);
+		
+		
+		return "redirect:/chef_cook.html?param1=secondtab";
 	}
 	
 	@RequestMapping(value="/chef/cook/snacks")
-	public String snacks(HttpSession request,@ModelAttribute("chefsnacks") ChefSnacks chefSnacks)
+	public String snacks(Model model, BindingResult result ,Principal principal,@ModelAttribute("chefsnacks") ChefSnacks chefSnacks)
 	{
-		String id=(String) request.getAttribute("chefid");
-		ChefPersonal chefpersonal=chefPersonalService.findOne(id);
-		chefSnacks.setChefpersonal(chefpersonal);
-		chefSnacksService.save(chefSnacks);
-	//	return "redirect:/chef/cook/dinner";
+
+		if(result.hasErrors())
+			return home(model,principal);
+		String name= principal.getName();
+		chefSnacksService.save(chefSnacks,name);
+		return "redirect:/chef_cook.html?param1=thirdtab";
 	}
 	
 	@RequestMapping(value="/chef/cook/dinner")
-	public String dinner(HttpSession request,@ModelAttribute("chefdinner") ChefDinner chefDinner)
+	public String dinner(Model model, BindingResult result ,Principal principal,@ModelAttribute("chefdinner") ChefDinner chefDinner)
 	{
-		String id=(String) request.getAttribute("chefid");
-		ChefPersonal chefpersonal=chefPersonalService.findOne(id);
-		chefDinner.setChefpersonal(chefpersonal);
-		chefDinnerService.save(chefDinner);
-	//	return "home";
+
+		if(result.hasErrors())
+			return home(model,principal);
+		String name= principal.getName();
+		chefDinnerService.save(chefDinner,name);
+		return "redirect:/chef_cook.html?param1=fourthtab";
 		
 	}
 	

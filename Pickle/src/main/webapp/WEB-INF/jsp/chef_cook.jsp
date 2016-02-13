@@ -2,7 +2,8 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@include file="../layout/taglib.jsp"%>
-<html lang="en">
+<%@include file="../layout/header.jsp"%>
+
 <head>
   <title>Chef SignUp</title>
   <meta charset="utf-8">
@@ -440,8 +441,23 @@ $(document).ready(function(){
         $("#dinnermodal").modal();
     });
 });    
+
 </script>     
-    
+<script type="text/javascript">
+	var param = "${param.param1}"
+	if (param == "firsttab") {
+		$('#tabs a[href="#chefbreakfast"]').tab('show')
+	}
+	if (param == "secondtab") {
+		$('#tabs a[href="#cheflunch"]').tab('show')
+	}
+	if (param == "thirdtab") {
+		$('#tabs a[href="#chefsnacks"]').tab('show')
+	}
+	if (param == "fourthtab") {
+		$('#tabs a[href="#chefdinner"]').tab('show')
+	}    
+	</script>
     
 </body>   
 </html>    

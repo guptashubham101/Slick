@@ -44,6 +44,13 @@ public ChefPersonal findOne(String id) {
 		// TODO Auto-generated method stub
 		chefpersonalRepository.save(chefpersonal);	
 	}
+
+	public ChefPersonal findByName(String name) {
+		
+		ChefPersonal chefPersonal=chefpersonalRepository.findByName(name);
+		
+		return chefPersonal;
+	}
 	}
 
 

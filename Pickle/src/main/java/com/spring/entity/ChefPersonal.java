@@ -19,7 +19,7 @@ public class ChefPersonal {
 
 	@Id
 	@GeneratedValue
-	private Integer chefserid;
+	private String chefserid;
 	private String cheffname;
 	private String cheflname;
 	private boolean enabled;
@@ -53,11 +53,11 @@ public class ChefPersonal {
 	@OneToMany
 	private List<ChefSnacks> chefsnacks;
 
-	public Integer getChefserid() {
+	public String getChefserid() {
 		return chefserid;
 	}
 
-	public void setChefserid(Integer chefserid) {
+	public void setChefserid(String chefserid) {
 		this.chefserid = chefserid;
 	}
 

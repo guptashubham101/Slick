@@ -41,7 +41,7 @@ public class InitService {
 		roleRepository.save(role3);
 		
 		UserPersonal user = new UserPersonal();
-		user.setUserid(1001);
+		user.setUserid("1001");
 		user.setUemail("admin@admin.com");
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setUpwd(encoder.encode("admin"));
