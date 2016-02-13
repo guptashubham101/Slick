@@ -113,6 +113,7 @@
       </div>
     </div>
   </div> 
+  
 
             <table class="table table-striped" >
          
@@ -139,12 +140,30 @@
       
        </catlina:forEach>
         <td></td>
-        <td><a href="#">
-          <span class="glyphicon glyphicon-trash"></span>
-        </a></td>   
+        <td><a href="<spring:url value='/chef/remove/breakfast/${item1.id}.html' />"
+          <span class="glyphicon glyphicon-trash breakfasttriggerRemove"></span>Remove></a>
+       </td>   
       </tr>    
     </tbody>
   </table>
+  
+  <div class="modal fade" id="breakfastRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove Item</h4>
+      </div>
+      <div class="modal-body">
+      Really you wanna do that?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <a href="" class="btn btn-danger removeBtn">Remove</a>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
          <div id="cheflunch" class="tab-pane fade">
               <button type="button" class="btn btn-default btn-sm" id="lunchbutton" style="float:right;">Add <span class="glyphicon glyphicon-plus-sign"></span></button>
@@ -224,12 +243,30 @@
       
        </catlina:forEach>
         <td></td>
-        <td><a href="#">
-          <span class="glyphicon glyphicon-trash"></span>
-        </a></td>   
+        <td><a href="<spring:url value='/chef/remove/lunch/${item2.id}.html' />"
+          <span class="glyphicon glyphicon-trash lunchtriggerRemove"></span>>Remove</a>
+        </td>   
       </tr>    
     </tbody>
   </table>
+  
+  <div class="modal fade" id="lunchRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove Item</h4>
+      </div>
+      <div class="modal-body">
+      Really you wanna do that?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <a href="" class="btn btn-danger removeBtn">Remove</a>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
          <div id="chefsnacks" class="tab-pane fade">
              <button type="button" class="btn btn-default btn-sm" id="snackbutton" style="float:right;">Add <span class="glyphicon glyphicon-plus-sign"></span></button>
@@ -309,12 +346,30 @@
       
        </catlina:forEach>
         <td></td>
-        <td><a href="#">
-          <span class="glyphicon glyphicon-trash"></span>
-        </a></td>   
+        <td><a href="<spring:url value='/chef/remove/snacks/${item3.id}.html' />"
+          <span class="glyphicon glyphicon-trash snackstriggerRemove"></span>>Remove</a>
+        </td>   
       </tr>    
     </tbody>
   </table>
+  
+  <div class="modal fade" id="snacksRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove Item</h4>
+      </div>
+      <div class="modal-body">
+      Really you wanna do that?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <a href="" class="btn btn-danger removeBtn">Remove</a>
+      </div>
+    </div>
+  </div>
+</div>
         </div>
     <div id="chefdinner" class="tab-pane fade">
         <button type="button" class="btn btn-default btn-sm" id="dinnerbutton" style="float:right;">Add <span class="glyphicon glyphicon-plus-sign"></span></button>
@@ -394,12 +449,30 @@
       
        </catlina:forEach>
         <td></td>
-        <td><a href="#">
-          <span class="glyphicon glyphicon-trash"></span>
-        </a></td>   
+       <td><a href="<spring:url value='/chef/remove/dinner/${item4.id}.html' />"
+          <span class="glyphicon glyphicon-trash snackstriggerRemove"></span>>Remove</a>
+        </td>   
       </tr>    
     </tbody>
   </table>
+  
+  <div class="modal fade" id="dinnerRemove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove Item</h4>
+      </div>
+      <div class="modal-body">
+      Really you wanna do that?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        <a href="" class="btn btn-danger removeBtn">Remove</a>
+      </div>
+    </div>
+  </div>
+</div>
         </div>    
     </div>
       
@@ -419,6 +492,12 @@ $(document).ready(function(){
     $("#breakfastbutton").click(function(){
         $("#breakfastmodal").modal();
     });
+    $(".breakfasttriggerRemove").click(function(e){
+  	  
+  	  e.preventDefault();
+  	  $("#breakfastRemove").modal('show');
+  	  $("#breakfastRemove .removeBtn").attr("href", $(this).attr("href"));
+});
 });
 </script>
 <script>
@@ -426,6 +505,13 @@ $(document).ready(function(){
     $("#lunchbutton").click(function(){
         $("#lunchmodal").modal();
     });
+    
+    $(".lunchtriggerRemove").click(function(e){
+  	  
+  	  e.preventDefault();
+  	  $("#lunchRemove").modal('show');
+  	  $("#lunchRemove .removeBtn").attr("href", $(this).attr("href"));
+  });
 });    
 </script>
 <script>
@@ -433,6 +519,12 @@ $(document).ready(function(){
     $("#snackbutton").click(function(){
         $("#snackmodal").modal();
     });
+    $(".snackstriggerRemove").click(function(e){
+  	  
+  	  e.preventDefault();
+  	  $("#snacksRemove").modal('show');
+  	  $("#snacksRemove .removeBtn").attr("href", $(this).attr("href"));
+  });
 });    
 </script>   
 <script>
@@ -440,9 +532,15 @@ $(document).ready(function(){
     $("#dinnerbutton").click(function(){
         $("#dinnermodal").modal();
     });
+    $(".dinnertriggerRemove").click(function(e){
+  	  
+  	  e.preventDefault();
+  	  $("#dinnerRemove").modal('show');
+  	  $("#dinnerRemove .removeBtn").attr("href", $(this).attr("href"));
+  });
 });    
-
-</script>     
+</script>
+    
 <script type="text/javascript">
 	var param = "${param.param1}"
 	if (param == "firsttab") {

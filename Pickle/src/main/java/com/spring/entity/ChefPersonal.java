@@ -2,6 +2,7 @@ package com.spring.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import org.hibernate.validator.constraints.Email;
 @Entity
 public class ChefPersonal {
 
+	private static final String mappedby = null;
 	@Id
 	@GeneratedValue
 	private String chefserid;
@@ -41,16 +43,16 @@ public class ChefPersonal {
 	@ManyToOne
 	private Role crole;
 	
-	@OneToMany
+	@OneToMany(mappedBy ="chefpersonal", cascade=CascadeType.REMOVE)
 	private List<ChefBreakfast> chefbreakfast;
 	
-	@OneToMany
+	@OneToMany(mappedBy ="chefpersonal", cascade=CascadeType.REMOVE)
 	private List<ChefLunch> cheflunch;
 	
-	@OneToMany
+	@OneToMany(mappedBy ="chefpersonal", cascade=CascadeType.REMOVE)
 	private List<ChefDinner> chefdinner;
 	
-	@OneToMany
+	@OneToMany(mappedBy ="chefpersonal", cascade=CascadeType.REMOVE)
 	private List<ChefSnacks> chefsnacks;
 
 	public String getChefserid() {

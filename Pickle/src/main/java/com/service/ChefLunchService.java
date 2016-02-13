@@ -1,15 +1,18 @@
 package com.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.method.P;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
 import com.repository.ChefLunchRepository;
 import com.repository.ChefPersonalRepository;
+
 import com.spring.entity.ChefLunch;
 import com.spring.entity.ChefPersonal;
-import com.spring.entity.ChefSnacks;
+
 
 
 @Service
@@ -38,6 +41,18 @@ public class ChefLunchService {
 			
 			chefLunch.setChefpersonal(chefPersonal);
 			chefLunchRepository.save(chefLunch);
+		}
+
+		public ChefLunch findOne(int id) {
+			// TODO Auto-generated method stub
+			return chefLunchRepository.findOne(id);
+		}
+		@PreAuthorize("#chefLunch.chefpersonal.name==authentication.name or hasRole('ROLE_CHEF')")
+		public void delete(@P("chefLunch") ChefLunch chefLunch) {
+			
+				chefLunchRepository.delete(chefLunch);
+		
+			
 		}
 
 		

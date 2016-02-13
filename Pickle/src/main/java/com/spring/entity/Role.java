@@ -17,10 +17,10 @@ public class Role {
 	
 	private String roleName;
 	
-	@OneToMany
+	@OneToMany(mappedBy="userPersonals")
 	List<UserPersonal> userPersonals;
 	
-	@OneToMany
+	@OneToMany(mappedBy="chefPersonals")
 	List<ChefPersonal> chefPersonals;
 
 	public List<UserPersonal> getUserPersonals() {
