@@ -87,7 +87,7 @@ public class ChefCookController {
 		return "redirect:/chef_cook.html?param1=firsttab";
 	}
 	
-	@RequestMapping(value="/chef/cook/lunch")
+	@RequestMapping(value="/chef/cook/lunch",method=RequestMethod.POST)
 	public String lunch(Model model, BindingResult result ,Principal principal,@ModelAttribute("cheflunch") ChefLunch chefLunch)
 	{
 		
@@ -100,7 +100,7 @@ public class ChefCookController {
 		return "redirect:/chef_cook.html?param1=secondtab";
 	}
 	
-	@RequestMapping(value="/chef/cook/snacks")
+	@RequestMapping(value="/chef/cook/snacks",method=RequestMethod.POST)
 	public String snacks(Model model, BindingResult result ,Principal principal,@ModelAttribute("chefsnacks") ChefSnacks chefSnacks)
 	{
 
@@ -111,7 +111,7 @@ public class ChefCookController {
 		return "redirect:/chef_cook.html?param1=thirdtab";
 	}
 	
-	@RequestMapping(value="/chef/cook/dinner")
+	@RequestMapping(value="/chef/cook/dinner",method=RequestMethod.POST)
 	public String dinner(Model model, BindingResult result ,Principal principal,@ModelAttribute("chefdinner") ChefDinner chefDinner)
 	{
 
