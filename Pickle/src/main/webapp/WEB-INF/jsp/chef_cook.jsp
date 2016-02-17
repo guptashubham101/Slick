@@ -1,40 +1,12 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@include file="../layout/taglib.jsp"%>
 <jsp:include page="header.jsp" />
 
 
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 
-   <nav id="topNav" class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll"><i class="ion-ios-analytics-outline"></i> Go Grab Gobble</a>
-            </div>
-            <div class="navbar-collapse collapse" id="bs-navbar">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a class="page-scroll" href="#one">How stuff works</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#two">Know Us</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" >Sign Out</a>
-                    </li> 
-                </ul>
-            </div>
-        </div>
-    </nav> 
-   <div class="container-fluid text-center">    
+   <div class="container-fluid text-center">  
    <div class="row content">
     <div class="col-sm-2 sidenav">
       <p>My Profile</p>
@@ -42,8 +14,8 @@
       <p><a href="#">Account</a></p>
       <p><a href="#">Payment</a></p>
     </div>
-    <div class="col-sm-8 text-left"> 
-     <ul class="nav nav-tabs nav-justified">
+    <div class="col-sm-8 text-left">
+     <ul class="nav nav-tabs nav-justified" id="tabs">
           <li class="active"><a data-toggle="tab" href="#chefbreakfast">Breakfast <br> 07:00 AM- 11:00 AM</a></li>
           <li><a data-toggle="tab" href="#cheflunch">Lunch  <br> 11:00 AM- 04:00 PM</a></li>
           <li><a data-toggle="tab" href="#chefsnacks">Snacks  <br> 04:00 PM- 07:00 PM</a></li>
@@ -65,7 +37,7 @@
           <h4 style="color:red;"><span class="glyphicon glyphicon-pencil"></span> Add Dish</h4>
         </div>
         <div class="modal-body">
-          <form:form role="form" commandName="chefbreakfast">
+          <form:form role="form" commandName="chefbreakfast" action="/Pickle/chef/cook/breakfast.html">
             <div class="form-group">
               <label for="bfastdishname"><span class="glyphicon glyphicon-cutlery"></span>Name</label>
               <input type="text" class="form-control" path="breakfastdishname" placeholder="Enter name of dish">
@@ -170,7 +142,7 @@
           <h4 style="color:red;"><span class="glyphicon glyphicon-pencil"></span> Add Dish</h4>
         </div>
         <div class="modal-body">
-          <form role="form" commandName="cheflunch" action="/chef/cook/lunch.html">
+          <form role="form" commandName="cheflunch" action="/Pickle/chef/cook/lunch.html">
             <div class="form-group">
               <label for="lunchdishname"><span class="glyphicon glyphicon-cutlery"></span>Name</label>
               <input type="text" class="form-control" path="lunchdishname" placeholder="Enter name of dish">
@@ -273,7 +245,7 @@
           <h4 style="color:red;"><span class="glyphicon glyphicon-pencil"></span> Add Dish</h4>
         </div>
         <div class="modal-body">
-          <form role="form" commandName="chefsnacks" action="/chef/cook/snacks.html">
+          <form role="form" commandName="chefsnacks" action="/Pickle/chef/cook/snacks.html">
             <div class="form-group">
               <label for="snackdishname"><span class="glyphicon glyphicon-cutlery"></span>Name</label>
               <input type="text" class="form-control" path="snackdishname" placeholder="Enter name of dish">
@@ -376,7 +348,7 @@
           <h4 style="color:red;"><span class="glyphicon glyphicon-pencil"></span> Add Dish</h4>
         </div>
         <div class="modal-body">
-          <form role="form" commandName="chefdinner" action="/chef/cook/dinner.html">
+          <form role="form" commandName="chefdinner" action="/Pickle/chef/cook/dinner.html">
             <div class="form-group">
               <label for="dinnerdishname"><span class="glyphicon glyphicon-cutlery"></span>Name</label>
               <input type="text" class="form-control" path="dinnerdishname" placeholder="Enter name of dish">
@@ -535,9 +507,7 @@ $(document).ready(function(){
     
 <script type="text/javascript">
 	var param = "${param.param1}"
-	if (param == "firsttab") {
-		$('#tabs a[href="#chefbreakfast"]').tab('show')
-	}
+	
 	if (param == "secondtab") {
 		$('#tabs a[href="#cheflunch"]').tab('show')
 	}

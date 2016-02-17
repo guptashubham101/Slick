@@ -98,7 +98,7 @@
 
 			<div id="chefsign2" class="tab-pane fade">
 				<div>
-					<form:form class="form-horizontal" role="form" commandName="chefaddress" action="/csignup/address.html">
+					<form:form class="form-horizontal" role="form" commandName="chefaddress" action="/Pickle/csignup/address.html">
 						<br>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="chefadd1">Address
@@ -173,7 +173,7 @@
 						<label><input type="checkbox" value="" id="check1">Are
 							the delivery and cooking address same?</label>
 					</div>
-					<form:form class="form-horizontal" role="form" commandName="chefkitchen" action="/csignup/kitchen.html">
+					<form:form class="form-horizontal" role="form" commandName="chefkitchen" action="/Pickle/csignup/kitchen.html">
 						<br>
 						<div class="form-group">
 							<label class="control-label col-sm-2" for="kitadd1">Address

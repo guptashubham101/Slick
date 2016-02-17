@@ -43,8 +43,8 @@ public class InitService {
 		UserPersonal user = new UserPersonal();
 		user.setUserid("admin");
 		user.setUemail("admin@admin.com");
-		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-		user.setUpwd(encoder.encode("admin"));
+	
+		user.setUpwd("admin");
 		user.setUfname("administrator");
 		user.setEnabled(true);
         user.setRole(role1);

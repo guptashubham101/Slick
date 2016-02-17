@@ -64,9 +64,12 @@ public class ChefController {
 	@RequestMapping(value="/csignup",method=RequestMethod.POST)
 	public String csignup(Model model,@ModelAttribute("chefpersonal") ChefPersonal chef)
 	{
+		
 		model.addAttribute("chefid",chef.getChefserid());
+		
 		chefPersonalService.save(chef);
-		return "redirect:/chef-signup.html?param1=secondtab";
+	
+		return "redirect:/csignup.html?param1=secondtab";
 	}
 	
 	
@@ -74,13 +77,20 @@ public class ChefController {
 	@RequestMapping("/csignup/address")
 	public String caddress(HttpSession request,@ModelAttribute("chefaddress") ChefAddress chefadd,RedirectAttributes redirectAttributes)
 	{
+		
 		String id=(String) request.getAttribute("chefid");
+		
 		ChefPersonal chefpersonal=chefPersonalService.findOne(id);
+		
 		chefpersonal.setChefAddress(chefadd);
+	
 		chefAddressService.save(chefadd);
+	
 		chefPersonalService.confirmChef(chefpersonal);
+	
 		redirectAttributes.addFlashAttribute("address",chefadd);
-		return "redirect:/chef-signup.html?param1=thirdtab";
+	
+		return "redirect:/csignup.html?param1=thirdtab";
 		
 	}
 	
@@ -88,13 +98,20 @@ public class ChefController {
 	@RequestMapping("/csignup/kitchen")
 	public String ckitchen(HttpSession request,@ModelAttribute("chefkitchen") ChefKitchen chefkit)
 	{
+	
 		String id=(String) request.getAttribute("chefid");
+		
 		ChefPersonal chefpersonal=chefPersonalService.findOne(id);
+	
 		chefpersonal.setChefKitchen(chefkit);
+		
 		chefKitchenService.save(chefkit);
+	
 		chefPersonalService.confirmChef(chefpersonal);
+		
 		mailService.sendMailChef(chefpersonal.getChefemail(), id);
-		return "redirect:/chef-signup.html?param1=fourthtab";
+	
+		return "redirect:/csignup.html?param1=fourthtab";
 		
 	}
 

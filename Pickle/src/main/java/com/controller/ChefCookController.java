@@ -83,7 +83,7 @@ public class ChefCookController {
 		chefBreakfastService.save(chefBreakfast,name);
 		
 		
-		return "redirect:/chef/cook/breakfast.html?param1=firsttab";
+		return "redirect:/chef/cook.html?param1=secondtab";
 	}
 	
 	@RequestMapping(value="/chef/cook/lunch",method=RequestMethod.POST)
@@ -96,7 +96,7 @@ public class ChefCookController {
 		chefLunchService.save(chefLunch,name);
 		
 		
-		return "redirect:/chef/cook/lunch.html?param1=secondtab";
+		return "redirect:/chef/cook.html?param1=thirdtab";
 	}
 	
 	@RequestMapping(value="/chef/cook/snacks",method=RequestMethod.POST)
@@ -107,7 +107,7 @@ public class ChefCookController {
 			return home(model,principal);
 		String name= principal.getName();
 		chefSnacksService.save(chefSnacks,name);
-		return "redirect:/chef/cook/snacks.html?param1=thirdtab";
+		return "redirect:/chef/cook.html?param1=fourthtab";
 	}
 	
 	@RequestMapping(value="/chef/cook/dinner",method=RequestMethod.POST)
@@ -118,7 +118,7 @@ public class ChefCookController {
 			return home(model,principal);
 		String name= principal.getName();
 		chefDinnerService.save(chefDinner,name);
-		return "redirect:/chef/cook/dinner.html?param1=fourthtab";
+		return "redirect:index.html";
 		
 	}
 	

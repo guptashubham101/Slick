@@ -15,7 +15,7 @@
 		<intercept-url pattern="/chef/**" access="hasAnyRole('ROLE_ADMIN','ROLE_CHEF')" />
 		<intercept-url pattern="/account**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER','ROLE_CHEF')" />
 		<csrf disabled="true" />
-		<form-login login-page="/chef/cook/breakfast.html"/>
+		<form-login login-page="/loginport" />
 		<logout logout-url="/logout" />
 	</http>
 	

@@ -21,5 +21,11 @@ public class LoginController {
 		System.out.println(request.getAttribute("userid"));
 		return "home";
 	}
+	@RequestMapping("/loginport")
+	public String decide()
+	{
+		System.out.println("1");
+		return "chef_cook";
+	}
 
 }

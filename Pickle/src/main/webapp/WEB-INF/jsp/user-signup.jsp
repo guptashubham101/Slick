@@ -91,7 +91,7 @@
    
    
   <div id="usign2" class="tab-pane fade"><spring:url value=""></spring:url>
-     <form:form class="form-horizontal" role="form" commandName="useraddress" action="/usignup/address.html">
+     <form:form class="form-horizontal" role="form" commandName="useraddress" action="/Pickle/usignup/address.html">
     <div class="form-group">
       <label class="control-label col-sm-2" for="uadd1">Address Line 1:</label>
       <div class="col-sm-10">
@@ -149,7 +149,13 @@
    <div id="usign3" class="tab-pane fade">
       <br>
       <div class="row">
-          <div class="col-sm-4 text-right"> <style>.logo{font-size: 50px;}</style><span class="glyphicon glyphicon-envelope logo"> </span></div>
+          <div class="col-sm-4 text-right"> 
+          <style>
+          .logo{
+          font-size: 50px;
+          }
+          </style>
+          <span class="glyphicon glyphicon-envelope logo"> </span></div>
        <div class="col-sm-4"> <p> A Confirmation mail has been sent to your Email ID. Kindly check your Email ID.</p> </div>    
          
   </div>
