@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="Pickle">
+		<class>com.entity.UserPersonal</class>
+		<class>com.entity.UserAddress</class>
+		<class>com.entity.ChefAddress</class>
+		<class>com.entity.ChefBreakfast</class>
+		<class>com.entity.ChefDinner</class>
+		<class>com.entity.ChefKitchen</class>
+		<class>com.entity.ChefLunch</class>
+		<class>com.entity.ChefPersonal</class>
+		<class>com.entity.ChefSnacks</class>
+		<class>com.entity.Role</class>
+	</persistence-unit>
+</persistence>

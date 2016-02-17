@@ -6,11 +6,11 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.entity.ChefPersonal;
+import com.entity.ChefSnacks;
 import com.repository.ChefPersonalRepository;
 import com.repository.ChefSnacksRepository;
-import com.spring.entity.ChefBreakfast;
-import com.spring.entity.ChefPersonal;
-import com.spring.entity.ChefSnacks;
+import com.entity.ChefBreakfast;
 
 @Service
 @Transactional
@@ -22,7 +22,7 @@ public class ChefSnacksService {
 		private ChefSnacksRepository chefSnacksRepository;
 		
 		@Autowired
-		ChefPersonalRepository chefpersonalRepository;
+		private ChefPersonalRepository chefpersonalRepository;
 		
 		public void save(ChefSnacks chefSnacks) {
 			chefSnacksRepository.save(chefSnacks);
@@ -30,7 +30,7 @@ public class ChefSnacksService {
 		}
 
 		public void save(ChefSnacks chefSnacks, String name) {
-			ChefPersonal chefPersonal = chefpersonalRepository.findByName(name);
+			ChefPersonal chefPersonal = chefpersonalRepository.findBycheffname(name);
 			
 			chefSnacks.setChefpersonal(chefPersonal);
 			chefSnacksRepository.save(chefSnacks);

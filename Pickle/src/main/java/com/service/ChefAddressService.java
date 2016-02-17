@@ -1,17 +1,18 @@
 package com.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.entity.ChefAddress;
 import com.repository.ChefAddressRepository;
 
-
-import com.spring.entity.ChefAddress;
-
-
+@Service
+@Transactional
 public class ChefAddressService {
 	
 	@Autowired
-	ChefAddressRepository chefaddressRepository;
+	private ChefAddressRepository chefaddressRepository;
 
 	
 

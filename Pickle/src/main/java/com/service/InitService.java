@@ -7,12 +7,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.entity.Role;
+import com.entity.UserAddress;
+import com.entity.UserPersonal;
 import com.repository.RoleRepository;
 import com.repository.UserAddressRepository;
 import com.repository.UserPersonalRepository;
-import com.spring.entity.Role;
-import com.spring.entity.UserAddress;
-import com.spring.entity.UserPersonal;
 
 @Transactional
 @Service
@@ -41,7 +41,7 @@ public class InitService {
 		roleRepository.save(role3);
 		
 		UserPersonal user = new UserPersonal();
-		user.setUserid("1001");
+		user.setUserid("admin");
 		user.setUemail("admin@admin.com");
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setUpwd(encoder.encode("admin"));
@@ -50,11 +50,11 @@ public class InitService {
         user.setRole(role1);
 		userPersonalRepository.save(user);
 		
-		UserAddress address = new UserAddress();
+		/*UserAddress address = new UserAddress();
 		address.setUadd1("street1");
 		address.setUcity("city");
 		address.setUserPersonal(user);
-		userAddressRepository.save(address);
+		userAddressRepository.save(address);*/
 	}
 
 }

@@ -1,18 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@include file="../layout/taglib.jsp"%>
-<%@include file="../layout/header.jsp"%>
 
-<head>
-  <title>Chef SignUp</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<%@include file="../layout/taglib.jsp"%>
+<jsp:include page="header.jsp" />
+
+
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</head>
-<body>
+
 
    <nav id="topNav" class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -73,14 +65,14 @@
           <h4 style="color:red;"><span class="glyphicon glyphicon-pencil"></span> Add Dish</h4>
         </div>
         <div class="modal-body">
-          <form role="form" commandName="chefbreakfast">
+          <form:form role="form" commandName="chefbreakfast">
             <div class="form-group">
               <label for="bfastdishname"><span class="glyphicon glyphicon-cutlery"></span>Name</label>
-              <input type="text" class="form-control" id="bfastdishname" placeholder="Enter name of dish">
+              <input type="text" class="form-control" path="breakfastdishname" placeholder="Enter name of dish">
             </div>
             <div class="form-group">
               <label for="bfastingredients"><span class="glyphicon glyphicon-grain"></span>Ingredients</label>
-              <input type="text" class="form-control" id="bfastingredients" placeholder="Enter ingredients used to prepare the dish.">
+              <input type="text" class="form-control" path="breakfastingredients" placeholder="Enter ingredients used to prepare the dish.">
             </div>
             <div class="radio-inline">
               <label><input type="radio" name="bfasttype">Vegetarian</label>
@@ -93,18 +85,18 @@
              </div>  
             <div class="form-group">
               <label for="bfastdescription"><span class="glyphicon glyphicon-edit"></span>Description</label>
-              <textarea class="form-control" rows="5" id="bfastription" placeholder="Enter description of the dish."></textarea>    
+              <textarea class="form-control" rows="5" path="breakfastdescription" placeholder="Enter description of the dish."></textarea>    
             </div>
              <div class="form-group">
               <label for="bfastdishprice"><span class="glyphicon glyphicon-piggy-bank"></span>Price</label>
-              <input type="text" class="form-control" id="bfastdishprice" placeholder="Enter price of dish in Rupees.">
+              <input type="text" class="form-control" path="breakfastprice" placeholder="Enter price of dish in Rupees.">
             </div> 
               <div class="form-group">
               <label for="bfastdishdate"><span class="glyphicon glyphicon-calendar"></span>Date</label>
-              <input type="text" class="form-control" id="bfastdishdate" placeholder="Enter date when dish is to be served.">
+              <input type="text" class="form-control" path="breakfastdate" placeholder="Enter date when dish is to be served.">
             </div>
             <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-ok"></span> Done</button>
-          </form>
+          </form:form>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-default btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
@@ -131,12 +123,12 @@
     <tbody>
        <tr>
        <catlina:forEach items="${ChefPersonal.chefbreakfast}" var="item1">
-      <td> ${item1.dish}</td>
-       <td> ${item1.ingredients}</td>
-       <td> ${item1.type}</td>
-       <td> ${item1.description}</td>
-       <td> ${item1.price}</td>
-      <td>  ${item1.date}</td>
+      <td> ${item1.breakfastdishname}</td>
+       <td> ${item1.breakfastingredients}</td>
+       <td> ${item1.breakfasttype}</td>
+       <td> ${item1.breakfastdescription}</td>
+       <td> ${item1.breakfastprice}</td>
+      <td>  ${item1.breakfastdate}</td>
       
        </catlina:forEach>
         <td></td>
@@ -181,11 +173,11 @@
           <form role="form" commandName="cheflunch" action="/chef/cook/lunch.html">
             <div class="form-group">
               <label for="lunchdishname"><span class="glyphicon glyphicon-cutlery"></span>Name</label>
-              <input type="text" class="form-control" id="lunchdishname" placeholder="Enter name of dish">
+              <input type="text" class="form-control" path="lunchdishname" placeholder="Enter name of dish">
             </div>
             <div class="form-group">
               <label for="lunchingredients"><span class="glyphicon glyphicon-grain"></span>Ingredients</label>
-              <input type="text" class="form-control" id="lunchingredients" placeholder="Enter ingredients used to prepare the dish.">
+              <input type="text" class="form-control" path="lunchingredients" placeholder="Enter ingredients used to prepare the dish.">
             </div>
             <div class="radio-inline">
               <label><input type="radio" name="lunchtype">Vegetarian</label>
@@ -198,15 +190,15 @@
              </div>  
             <div class="form-group">
               <label for="lunchdescription"><span class="glyphicon glyphicon-edit"></span>Description</label>
-              <textarea class="form-control" rows="5" id="lunchdescription" placeholder="Enter description of the dish."></textarea>    
+              <textarea class="form-control" rows="5" path="lunchdescription" placeholder="Enter description of the dish."></textarea>    
             </div>
              <div class="form-group">
               <label for="lunchdishprice"><span class="glyphicon glyphicon-piggy-bank"></span>Price</label>
-              <input type="text" class="form-control" id="lunchdishprice" placeholder="Enter price of dish in Rupees.">
+              <input type="text" class="form-control" path="lunchprice" placeholder="Enter price of dish in Rupees.">
             </div> 
               <div class="form-group">
               <label for="lunchdishdate"><span class="glyphicon glyphicon-calendar"></span>Date</label>
-              <input type="text" class="form-control" id="lunchdishdate" placeholder="Enter date when dish is to be served.">
+              <input type="text" class="form-control" path="lunchdate" placeholder="Enter date when dish is to be served.">
             </div>
             <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-ok"></span> Done</button>
           </form>
@@ -234,12 +226,12 @@
     <tbody>
        <tr>
        <catlina:forEach items="${ChefPersonal.cheflunch}" var="item2">
-      <td> ${item2.dish}</td>
-       <td> ${item2.ingredients}</td>
-       <td> ${item2.type}</td>
-       <td> ${item2.description}</td>
-       <td> ${item2.price}</td>
-      <td>  ${item2.date}</td>
+      <td> ${item2.lunchdishname}</td>
+       <td> ${item2.lunchingredients}</td>
+       <td> ${item2.lunchtype}</td>
+       <td> ${item2.lunchdescription}</td>
+       <td> ${item2.lunchprice}</td>
+      <td>  ${item2.lunchdate}</td>
       
        </catlina:forEach>
         <td></td>
@@ -284,11 +276,11 @@
           <form role="form" commandName="chefsnacks" action="/chef/cook/snacks.html">
             <div class="form-group">
               <label for="snackdishname"><span class="glyphicon glyphicon-cutlery"></span>Name</label>
-              <input type="text" class="form-control" id="snackdishname" placeholder="Enter name of dish">
+              <input type="text" class="form-control" path="snackdishname" placeholder="Enter name of dish">
             </div>
             <div class="form-group">
               <label for="snackingredients"><span class="glyphicon glyphicon-grain"></span>Ingredients</label>
-              <input type="text" class="form-control" id="snackingredients" placeholder="Enter ingredients used to prepare the dish.">
+              <input type="text" class="form-control" path="snackingredients" placeholder="Enter ingredients used to prepare the dish.">
             </div>
             <div class="radio-inline">
               <label><input type="radio" name="snacktype">Vegetarian</label>
@@ -301,15 +293,15 @@
              </div>  
             <div class="form-group">
               <label for="snackdescription"><span class="glyphicon glyphicon-edit"></span>Description</label>
-              <textarea class="form-control" rows="5" id="snackdescription" placeholder="Enter description of the dish."></textarea>    
+              <textarea class="form-control" rows="5" path="snackdescription" placeholder="Enter description of the dish."></textarea>    
             </div>
              <div class="form-group">
               <label for="snackdishprice"><span class="glyphicon glyphicon-piggy-bank"></span>Price</label>
-              <input type="text" class="form-control" id="snackdishprice" placeholder="Enter price of dish in Rupees.">
+              <input type="text" class="form-control" path="snackprice" placeholder="Enter price of dish in Rupees.">
             </div> 
               <div class="form-group">
               <label for="snackdishdate"><span class="glyphicon glyphicon-calendar"></span>Date</label>
-              <input type="text" class="form-control" id="snackdishdate" placeholder="Enter date when dish is to be served.">
+              <input type="text" class="form-control" path="snackdate" placeholder="Enter date when dish is to be served.">
             </div>
             <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-ok"></span> Done</button>
           </form>
@@ -337,12 +329,12 @@
     <tbody>
        <tr>
         <catlina:forEach items="${ChefPersonal.chefsnacks}" var="item3">
-      <td> ${item3.dish}</td>
-       <td> ${item3.ingredients}</td>
-       <td> ${item3.type}</td>
-       <td> ${item3.description}</td>
-       <td> ${item3.price}</td>
-      <td>  ${item3.date}</td>
+      <td> ${item3.snackdishname}</td>
+       <td> ${item3.snackingredients}</td>
+       <td> ${item3.snacktype}</td>
+       <td> ${item3.snackdescription}</td>
+       <td> ${item3.snackprice}</td>
+      <td>  ${item3.snackdate}</td>
       
        </catlina:forEach>
         <td></td>
@@ -387,11 +379,11 @@
           <form role="form" commandName="chefdinner" action="/chef/cook/dinner.html">
             <div class="form-group">
               <label for="dinnerdishname"><span class="glyphicon glyphicon-cutlery"></span>Name</label>
-              <input type="text" class="form-control" id="dinnerdishname" placeholder="Enter name of dish">
+              <input type="text" class="form-control" path="dinnerdishname" placeholder="Enter name of dish">
             </div>
             <div class="form-group">
               <label for="dinneringredients"><span class="glyphicon glyphicon-grain"></span>Ingredients</label>
-              <input type="text" class="form-control" id="dinneringredients" placeholder="Enter ingredients used to prepare the dish.">
+              <input type="text" class="form-control" path="dinneringredients" placeholder="Enter ingredients used to prepare the dish.">
             </div>
             <div class="radio-inline">
               <label><input type="radio" name="dinnertype">Vegetarian</label>
@@ -404,15 +396,15 @@
              </div>  
             <div class="form-group">
               <label for="dinnerdescription"><span class="glyphicon glyphicon-edit"></span>Description</label>
-              <textarea class="form-control" rows="5" id="dinnerdescription" placeholder="Enter description of the dish."></textarea>    
+              <textarea class="form-control" rows="5" path="dinnerdescription" placeholder="Enter description of the dish."></textarea>    
             </div>
              <div class="form-group">
               <label for="dinnerdishprice"><span class="glyphicon glyphicon-piggy-bank"></span>Price</label>
-              <input type="text" class="form-control" id="dinnerdishprice" placeholder="Enter price of dish in Rupees.">
+              <input type="text" class="form-control" path="dinnerprice" placeholder="Enter price of dish in Rupees.">
             </div> 
               <div class="form-group">
               <label for="dinnerdishdate"><span class="glyphicon glyphicon-calendar"></span>Date</label>
-              <input type="text" class="form-control" id="dinnerdishdate" placeholder="Enter date when dish is to be served.">
+              <input type="text" class="form-control" path="dinnerdate" placeholder="Enter date when dish is to be served.">
             </div>
             <button type="submit" class="btn btn-default btn-success btn-block"><span class="glyphicon glyphicon-ok"></span> Done</button>
           </form>
@@ -440,12 +432,12 @@
     <tbody>
        <tr>
        <catlina:forEach items="${ChefPersonal.chefdinner}" var="item4">
-      <td> ${item4.dish}</td>
-       <td> ${item4.ingredients}</td>
-       <td> ${item4.type}</td>
-       <td> ${item4.description}</td>
-       <td> ${item4.price}</td>
-      <td>  ${item4.date}</td>
+      <td> ${item4.dinnerdishname}</td>
+       <td> ${item4.dinneringredients}</td>
+       <td> ${item4.dinnertype}</td>
+       <td> ${item4.dinnerdescription}</td>
+       <td> ${item4.dinnerprice}</td>
+      <td>  ${item4.dinnerdate}</td>
       
        </catlina:forEach>
         <td></td>

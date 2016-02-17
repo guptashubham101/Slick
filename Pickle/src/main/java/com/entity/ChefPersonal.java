@@ -1,4 +1,4 @@
-package com.spring.entity;
+package com.entity;
 
 import java.util.List;
 
@@ -20,7 +20,6 @@ public class ChefPersonal {
 
 	private static final String mappedby = null;
 	@Id
-	@GeneratedValue
 	private String chefserid;
 	private String cheffname;
 	private String cheflname;

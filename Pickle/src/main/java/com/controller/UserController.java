@@ -6,28 +6,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.entity.UserAddress;
+import com.entity.UserPersonal;
 import com.service.MailService;
 import com.service.UserAddressService;
 import com.service.UserPersonalService;
-import com.spring.entity.UserAddress;
-import com.spring.entity.UserPersonal;
 
 @Controller
 @SessionAttributes("userid")
 public class UserController {
 	
 	@Autowired
-	UserPersonalService userpersonalService;
+	private UserPersonalService userpersonalService;
 	
 	@Autowired
 	private UserAddressService userAddressService;
 	
 	@Autowired 
-	MailService mailService;
+	private MailService mailService;
 	
 	@ModelAttribute("userpersonal")
 		public UserPersonal construct()
@@ -53,22 +54,29 @@ public class UserController {
 	{
 		userpersonalService.save(user);
 		model.addAttribute("userid",user.getUserid());
-		return "redirect:/user-signup.html?param1=usecondtab";
+		return "redirect:/usignup.html?param1=secondtab";
 	}
 	
-	@RequestMapping("/user-signup/address.html")
+	@RequestMapping("/usignup/address")
 	public String uaddress(HttpSession request,@ModelAttribute("useraddress") UserAddress useradd)
 	{
 		String userid=(String) request.getAttribute("userid");
 		UserPersonal userpersonal=userpersonalService.findOne(userid);
 		userpersonal.setUserAddresses(useradd);
 		userAddressService.save(useradd);
-		userpersonalService.confirmUser(userpersonal);
+	//	userpersonalService.confirmUser(userpersonal);
 		mailService.sendMailUser(userpersonal.getUemail(), userid);
-		return "redirect:/user-signup.html?param1=uthirdtab";
+		return "redirect:/usignup.html?param1=thirdtab";
 	}
 	
-	@RequestMapping("/user-signup/confirmation")
+	@RequestMapping("/usignup/confirmation/{userid}")
+	public String confirmUse(@PathVariable String userid){
+		UserPersonal userPersonal = userpersonalService.findOne(userid);
+		userPersonal.setEnabled(true);
+		userpersonalService.confirmUser(userPersonal);
+		return "redirect:/index.html";
+	}
+	/*
 	public String uconfirm(HttpSession request)
 	{
 		String userid=(String) request.getAttribute("userid");
@@ -76,5 +84,6 @@ public class UserController {
 		userpersonal.setEnabled(true);
 		userpersonalService.confirmUser(userpersonal);
 		return "redirect:/index.html";
-	}
+	}*/
+	
 }

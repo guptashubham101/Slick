@@ -1,4 +1,4 @@
-package com.spring.entity;
+package com.entity;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -15,13 +15,10 @@ import org.hibernate.validator.constraints.Email;
 public class UserPersonal {
 	
 	@Id
-	@GeneratedValue
 	private String userid;
 	private boolean enabled;
 	private String ufname;
 	private String ulname;
-	@Email()
-	@Column(unique=true)
 	private String uemail;
 	
 	private String upwd;

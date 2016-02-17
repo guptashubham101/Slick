@@ -2,15 +2,10 @@ package com.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.spring.entity.UserAddress;
-import com.spring.entity.UserPersonal;
+import com.entity.UserAddress;
+import com.entity.UserPersonal;
 
-public interface UserPersonalRepository extends JpaRepository<UserPersonal,Integer>{
+public interface UserPersonalRepository extends JpaRepository<UserPersonal,String>{
 
-	void save(UserAddress user);
-
-
-
-	UserPersonal findOne(String userid);
-
+	
 }

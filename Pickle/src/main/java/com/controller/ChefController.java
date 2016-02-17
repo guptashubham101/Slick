@@ -6,24 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.entity.ChefAddress;
+import com.entity.ChefKitchen;
+import com.entity.ChefPersonal;
 import com.service.ChefAddressService;
 import com.service.ChefKitchenService;
 import com.service.ChefPersonalService;
 import com.service.MailService;
-import com.spring.entity.ChefAddress;
-import com.spring.entity.ChefKitchen;
-import com.spring.entity.ChefPersonal;
 
 @Controller
-@SessionAttributes("chef")
+@SessionAttributes("chefid")
 public class ChefController {
 	
 	@Autowired
-	MailService mailService;
+	private MailService mailService;
 	
 	@Autowired
 	private ChefPersonalService chefPersonalService;
@@ -64,25 +66,26 @@ public class ChefController {
 	{
 		model.addAttribute("chefid",chef.getChefserid());
 		chefPersonalService.save(chef);
-		return "redirect:/chef-signup.html?param1=csecondtab";
+		return "redirect:/chef-signup.html?param1=secondtab";
 	}
 	
 	
 	
-	@RequestMapping("/chef-signup/address.html")
-	public String caddress(HttpSession request,@ModelAttribute("chefaddress") ChefAddress chefadd)
+	@RequestMapping("/csignup/address")
+	public String caddress(HttpSession request,@ModelAttribute("chefaddress") ChefAddress chefadd,RedirectAttributes redirectAttributes)
 	{
 		String id=(String) request.getAttribute("chefid");
 		ChefPersonal chefpersonal=chefPersonalService.findOne(id);
 		chefpersonal.setChefAddress(chefadd);
 		chefAddressService.save(chefadd);
 		chefPersonalService.confirmChef(chefpersonal);
-		return "redirect:/user-signup.html?param1=cthirdtab";
+		redirectAttributes.addFlashAttribute("address",chefadd);
+		return "redirect:/chef-signup.html?param1=thirdtab";
 		
 	}
 	
 	
-	@RequestMapping("/chef-signup/kitchen.html")
+	@RequestMapping("/csignup/kitchen")
 	public String ckitchen(HttpSession request,@ModelAttribute("chefkitchen") ChefKitchen chefkit)
 	{
 		String id=(String) request.getAttribute("chefid");
@@ -91,16 +94,25 @@ public class ChefController {
 		chefKitchenService.save(chefkit);
 		chefPersonalService.confirmChef(chefpersonal);
 		mailService.sendMailChef(chefpersonal.getChefemail(), id);
-		return "redirect:/user-signup.html?param1=cfourthtab";
+		return "redirect:/chef-signup.html?param1=fourthtab";
 		
 	}
-	@RequestMapping("/chef-signup/confirmation")
-	public String uconfirm(HttpSession request)
+
+	@RequestMapping("/csignup/confirmation/{userid}")
+	public String confirmUser(@PathVariable String userid){
+		ChefPersonal chefPersonal = chefPersonalService.findOne(userid);
+		chefPersonal.setEnabled(true);
+		chefPersonalService.confirmChef(chefPersonal);
+		return "redirect:/index.html";
+	}
+	
+	
+	/*public String uconfirm(HttpSession request)
 	{
 		String id=(String) request.getAttribute("chefid");
 		ChefPersonal chefpersonal=chefPersonalService.findOne(id);
 		chefpersonal.setEnabled(true);
 		chefPersonalService.confirmChef(chefpersonal);
 		return "redirect:/index.html";
-	}
+	}*/
 }

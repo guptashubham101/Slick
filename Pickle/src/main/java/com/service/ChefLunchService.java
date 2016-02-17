@@ -6,12 +6,10 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.entity.ChefLunch;
+import com.entity.ChefPersonal;
 import com.repository.ChefLunchRepository;
 import com.repository.ChefPersonalRepository;
-
-import com.spring.entity.ChefLunch;
-import com.spring.entity.ChefPersonal;
 
 
 
@@ -25,7 +23,7 @@ public class ChefLunchService {
 		private ChefLunchRepository chefLunchRepository;
 		
 		@Autowired
-		ChefPersonalRepository chefpersonalRepository;
+		private ChefPersonalRepository chefpersonalRepository;
 		
 		
 		
@@ -37,7 +35,7 @@ public class ChefLunchService {
 
 		public void save(ChefLunch chefLunch, String name) {
 			// TODO Auto-generated method stub
-			ChefPersonal chefPersonal = chefpersonalRepository.findByName(name);
+			ChefPersonal chefPersonal = chefpersonalRepository.findBycheffname(name);
 			
 			chefLunch.setChefpersonal(chefPersonal);
 			chefLunchRepository.save(chefLunch);

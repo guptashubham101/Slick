@@ -13,17 +13,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import com.entity.ChefDinner;
+import com.entity.ChefLunch;
+import com.entity.ChefSnacks;
 import com.service.ChefBreakfastService;
 import com.service.ChefDinnerService;
 import com.service.ChefLunchService;
 import com.service.ChefPersonalService;
 import com.service.ChefSnacksService;
-import com.spring.entity.ChefBreakfast;
-import com.spring.entity.ChefDinner;
-import com.spring.entity.ChefLunch;
-
-import com.spring.entity.ChefSnacks;
+import com.entity.ChefBreakfast;
 
 
 @Controller
@@ -68,7 +66,7 @@ public class ChefCookController {
 	return new ChefDinner();
 	}
 	
-	@RequestMapping("/loginport")
+	@RequestMapping("/chef/cook/breakfast")
 	public String home(Model model,Principal principal){
 		String name = principal.getName();
 		model.addAttribute("chefname",chefPersonalService.findByName(name));
@@ -76,7 +74,7 @@ public class ChefCookController {
 	}
 	
 	
-	@RequestMapping(value="/loginport",method=RequestMethod.POST)
+	@RequestMapping(value="/chef/cook/breakfast",method=RequestMethod.POST)
 	public String breakfast(Model model, BindingResult result ,Principal principal,@ModelAttribute("chefbreakfast") ChefBreakfast chefBreakfast)
 	{
 		if(result.hasErrors())
@@ -85,7 +83,7 @@ public class ChefCookController {
 		chefBreakfastService.save(chefBreakfast,name);
 		
 		
-		return "redirect:/chef_cook.html?param1=firsttab";
+		return "redirect:/chef/cook/breakfast.html?param1=firsttab";
 	}
 	
 	@RequestMapping(value="/chef/cook/lunch",method=RequestMethod.POST)
@@ -98,7 +96,7 @@ public class ChefCookController {
 		chefLunchService.save(chefLunch,name);
 		
 		
-		return "redirect:/chef_cook.html?param1=secondtab";
+		return "redirect:/chef/cook/lunch.html?param1=secondtab";
 	}
 	
 	@RequestMapping(value="/chef/cook/snacks",method=RequestMethod.POST)
@@ -109,7 +107,7 @@ public class ChefCookController {
 			return home(model,principal);
 		String name= principal.getName();
 		chefSnacksService.save(chefSnacks,name);
-		return "redirect:/chef_cook.html?param1=thirdtab";
+		return "redirect:/chef/cook/snacks.html?param1=thirdtab";
 	}
 	
 	@RequestMapping(value="/chef/cook/dinner",method=RequestMethod.POST)
@@ -120,7 +118,7 @@ public class ChefCookController {
 			return home(model,principal);
 		String name= principal.getName();
 		chefDinnerService.save(chefDinner,name);
-		return "redirect:/chef_cook.html?param1=fourthtab";
+		return "redirect:/chef/cook/dinner.html?param1=fourthtab";
 		
 	}
 	

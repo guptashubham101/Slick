@@ -1,4 +1,4 @@
-package com.spring.entity;
+package com.entity;
 
 import java.util.List;
 
@@ -17,10 +17,10 @@ public class Role {
 	
 	private String roleName;
 	
-	@OneToMany(mappedBy="userPersonals")
+	/*@OneToMany(mappedBy="userPersonal")
 	List<UserPersonal> userPersonals;
 	
-	@OneToMany(mappedBy="chefPersonals")
+	@OneToMany(mappedBy="chefPersonal")
 	List<ChefPersonal> chefPersonals;
 
 	public List<UserPersonal> getUserPersonals() {
@@ -36,8 +36,8 @@ public class Role {
 	}
 
 	public void setChefPersonals(List<ChefPersonal> chefPersonals) {
-		this.chefPersonals = chefPersonals;
-	}
+		this.chefPersonals = chefPersonals;*/
+//	}
 
 	public Integer getId() {
 		return id;

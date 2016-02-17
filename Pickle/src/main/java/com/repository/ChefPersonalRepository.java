@@ -2,23 +2,14 @@ package com.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.entity.ChefPersonal;
 
-
-import com.spring.entity.ChefPersonal;
-
-public interface ChefPersonalRepository  extends JpaRepository<ChefPersonal,Integer> {
+public interface ChefPersonalRepository  extends JpaRepository<ChefPersonal,String> {
 
 	
+	ChefPersonal findBycheffname(String name);
 
 	
-
-	ChefPersonal findOne(String id);
-
-
-	
-
-
-	ChefPersonal findByName(String name);
 	
 
 

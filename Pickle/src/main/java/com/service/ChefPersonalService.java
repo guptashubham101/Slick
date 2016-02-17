@@ -5,11 +5,10 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
+import com.entity.ChefPersonal;
+import com.entity.Role;
 import com.repository.ChefPersonalRepository;
 import com.repository.RoleRepository;
-import com.spring.entity.ChefPersonal;
-import com.spring.entity.Role;
 
 @Service
 @Transactional
@@ -18,10 +17,10 @@ public class ChefPersonalService {
 	
 		
 		@Autowired
-		ChefPersonalRepository chefpersonalRepository;
+		private ChefPersonalRepository chefpersonalRepository;
 		
 		@Autowired
-		RoleRepository roleRepository;
+		private RoleRepository roleRepository;
 		
 		
 
@@ -47,7 +46,7 @@ public ChefPersonal findOne(String id) {
 
 	public ChefPersonal findByName(String name) {
 		
-		ChefPersonal chefPersonal=chefpersonalRepository.findByName(name);
+		ChefPersonal chefPersonal=chefpersonalRepository.findBycheffname(name);
 		
 		return chefPersonal;
 	}

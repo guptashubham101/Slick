@@ -2,7 +2,7 @@ package com.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.spring.entity.ChefKitchen;
+import com.entity.ChefKitchen;
 
 public interface ChefKitchenRepository  extends JpaRepository<ChefKitchen,Integer>{
 

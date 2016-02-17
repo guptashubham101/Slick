@@ -1,18 +1,25 @@
 package com.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import com.entity.UserAddress;
+import com.repository.UserAddressRepository;
 import com.repository.UserPersonalRepository;
-import com.spring.entity.UserAddress;
 
+@Service
+@Transactional
 public class UserAddressService {
 
 	
+
+	
 	@Autowired
-	UserPersonalRepository userpersonalRepository;
+	private UserAddressRepository addressRepository;
 	
 	public void save(UserAddress user) {
-		userpersonalRepository.save(user);
+		addressRepository.save(user);
 		
 	}
 

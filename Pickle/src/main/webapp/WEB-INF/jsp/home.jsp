@@ -1,19 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <%@include file="../layout/taglib.jsp"%>
-<%@include file="../layout/header.jsp"%>
 
-<head>
-  <title>Go Grab Gobble</title>
-  <meta charset="utf-8">    
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<jsp:include page="header.jsp" />
+  
   <link rel="stylesheet" type="text/css" href="css/home.css">
-</head>
-<body>
+
      <div class="jumbotron" >
          <div id="home_location">
             <div id="location_text"> 

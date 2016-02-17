@@ -1,16 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
+<%@include file="../layout/taglib.jsp"%>
 <html>
 <head>
   <title>header</title>
-  <meta charset="utf-8">    
+  <meta charset="UTF-8">    
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="home.css">
+     <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous">
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css"
+	integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r"
+	crossorigin="anonymous">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	
+	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+	crossorigin="anonymous"></script>
     
 </head>
 <body>
@@ -50,7 +65,7 @@
                     <li class="signup_dropdown"> 
                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">SignUp <span class="caret"></span></a>
                            <ul class="dropdown-menu">
-                               <li><a href='<spring:url value="/usignup.html"></spring:url>'>>Customer</a></li>
+                               <li><a href='<spring:url value="/usignup.html"></spring:url>'>Customer</a></li>
                                <li><a href='<spring:url value="/csignup.html"></spring:url>'>>Chef</a></li>   
                            </ul>    
                     </li>
@@ -101,7 +116,7 @@
       
     </div>
   </div>    
-</body> 
+
 <script type="text/javascript">
 var param = "${param.param}"
 if(param == "show"){

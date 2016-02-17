@@ -5,20 +5,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.entity.Role;
+import com.entity.UserPersonal;
 import com.repository.RoleRepository;
 import com.repository.UserPersonalRepository;
-import com.spring.entity.Role;
-import com.spring.entity.UserPersonal;
 
 @Service
 @Transactional
 public class UserPersonalService {
 	
 	@Autowired
-	UserPersonalRepository userpersonalRepository;
+	private UserPersonalRepository userpersonalRepository;
 	
 	@Autowired
-	RoleRepository roleRepository;
+	private RoleRepository roleRepository;
 	
 	
 
